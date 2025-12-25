@@ -15,7 +15,7 @@
 
   <br>
   
-  <img src="screenshots/dashboard.png" width="800" alt="NeonAI Dashboard Preview" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);">
+  <img src="C:\Users\anshs\OneDrive\Pictures\Screenshots\Screenshot 2025-12-25 231638.png" width="800" alt="NeonAI Dashboard Preview" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);">
   <br><br>
 </div>
 
