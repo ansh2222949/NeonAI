@@ -15,7 +15,8 @@
 
   <br>
   
-  <img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/38a39252-7474-4a30-a6a5-67438b9b9b96" />
+ <img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/ffe4d47e-c869-4e87-8715-db17f9ada04d" />
+  <br><br>
 </div>
 
 ---
@@ -68,64 +69,60 @@ graph TD;
     Waterfall_Logic-->Confidence_Gate;
     Waterfall_Logic-->Mode_Rules;
     Mode_Rules-->Local_LLM;
+
 ```
-🖥️ Frontend (UI)
-Pure HTML, CSS, JavaScript (No frameworks).
 
-GSAP-powered animations.
+---
 
-10+ Neon Themes + Light / Dark mode.
+## 🖥️ Frontend (UI)
 
-Physics-based Liquid Toggle.
+* **Pure HTML, CSS, JavaScript** (No frameworks).
+* **GSAP-powered animations**.
+* 10+ Neon Themes + Light / Dark mode.
+* Physics-based **Liquid Toggle**.
+* Fully responsive (Desktop + Mobile).
 
-Fully responsive (Desktop + Mobile).
+> **Note on Structure:**
+> * `templates/`: Contains UI files (`index.html`, `styles.css`, `app.js`) served via Flask.
+> * `static/`: Currently used for user-uploaded wallpapers.
+> * *The frontend is not an SPA. It is a controlled UI panel, intentionally simple and stable.*
+> 
+> 
 
-Note on Structure:
+---
 
-templates/: Contains UI files (index.html, styles.css, app.js) served via Flask.
+## 🎬 NEON MOVIES Mode
 
-static/: Currently used for user-uploaded wallpapers.
+* Displays trending movies.
+* Uses **TMDB API** (Optional).
+* Auto-scroll carousel with hover/touch pause.
+* Learns user genre preferences.
+* **Offline Fallback:** Uses a local movie database if internet is unavailable.
 
-The frontend is not an SPA. It is a controlled UI panel, intentionally simple and stable.
+## 📚 NEON STUDY (Exam Mode)
 
+* **RAG Pipeline:** Upload a PDF syllabus.
+* Indexes content locally using a Vector Database.
+* **Strict Rule:** If the answer is not present in the PDF → **The AI Refuses**.
+* Internet access is **Completely Blocked** in this mode.
+* *Designed for exam-safe, hallucination-free learning.*
 
-🎬 NEON MOVIES Mode
-Displays trending movies.
+---
 
-Uses TMDB API (Optional).
+## 🧠 Local LLM Engine
 
-Auto-scroll carousel with hover/touch pause.
-
-Learns user genre preferences.
-
-Offline Fallback: Uses a local movie database if internet is unavailable.
-
-
-📚 NEON STUDY (Exam Mode)
-RAG Pipeline: Upload a PDF syllabus.
-
-Indexes content locally using a Vector Database.
-
-Strict Rule: If the answer is not present in the PDF → The AI Refuses.
-
-Internet access is Completely Blocked in this mode.
-
-Designed for exam-safe, hallucination-free learning.
-
-🧠 Local LLM Engine
 NeonAI does not depend on cloud LLM APIs.
 
-Powered by local models (via Ollama).
+* Powered by local models (via **Ollama**).
+* Fully offline capable.
+* Internet access is optional and gated.
+* External APIs never override system rules.
 
-Fully offline capable.
+---
 
-Internet access is optional and gated.
+## 📂 Project Structure
 
-External APIs never override system rules.
-
-📂 Project Structure
-```Plaintext
-
+```text
 NeonAI/
 │
 ├── server.py              # Flask backend (API + routing)
@@ -160,53 +157,82 @@ NeonAI/
 │
 └── user_data/
     └── profile.json       # Local user profile & preferences
-```
-▶️ How to Run
-1️⃣ Requirements
-```
-Python 3.10+
-```
-Local LLM runtime (e.g., Ollama) installed and running.
 
-2️⃣ Install Dependencies
-```Bash
+```
 
+---
+
+## ▶️ How to Run
+
+### 1️⃣ Requirements
+
+* Python 3.10+
+* Local LLM runtime (e.g., [Ollama](https://ollama.com/)) installed and running.
+
+### 2️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+
 ```
-3️⃣ Start NeonAI
-Double-click START_NEON.bat Or run manually via terminal:
 
-```Bash
+### 3️⃣ Start NeonAI
 
+Double-click **`START_NEON.bat`** *Or run manually via terminal:*
+
+```bash
 python server.py
-Open in Browser: http://localhost:5000
+
 ```
-🧪 Project Status
-✅ Core system functional
 
-✅ UI stable & responsive
+**Open in Browser:** `http://localhost:5000`
 
-✅ Multi-mode logic working
+---
 
-⚠️ Experimental (Architecture locked for iteration)
+## 🧪 Project Status
 
-⚠️ Disclaimer
-This is an experimental project built for learning, research, and AI system design exploration. It is not a commercial product.
+* ✅ Core system functional
+* ✅ UI stable & responsive
+* ✅ Multi-mode logic working
+* ⚠️ Experimental (Architecture locked for iteration)
 
-<div align="center"> <h3>🧠 Author</h3> <b>Ansh</b>
+---
+
+## ⚠️ Disclaimer
+
+This is an **experimental project** built for learning, research, and AI system design exploration. It is not a commercial product.
+
+---
+
+<div align="center">
+<h3>🧠 Author</h3>
+<b>Ansh</b>
+
+
 
 
 <i>B.Tech CSE</i>
 
 
 
+
+
 <b>Focus Areas:</b>
+
+
 
 
 AI Systems (not just models) • Offline-first Architecture • Controlled AI Design
 
 
 
+
+
+
 <i>"NeonAI is not about how smart the model is. It’s about how controlled, safe, and purposeful AI should be."</i>
 
 </div>
+
+```
+
+```
