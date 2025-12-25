@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>NeonAI V5 - ACE</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body class="theme-emerald">
+    <div class="bg-layer" id="bgLayer"></div>
+    <div class="liquid-bg"></div>
+    <div class="rgb-strip"></div>
+    <div id="drawer-overlay" onclick="toggleDrawer()"></div>
+
+    <header>
+      <div class="logo-box">
+        <div id="neon-logo">N</div>
+        <div id="neon-name">NEON AI</div>
+      </div>
+
+      <div class="header-controls">
+        <button aria-label="toggle" aria-pressed="true" class="liquid-toggle">
+          <div class="knockout">
+            <div class="indicator indicator--masked">
+              <div class="mask"></div>
+            </div>
+          </div>
+          <div class="indicator__liquid">
+            <div class="shadow"></div>
+            <div class="wrapper">
+              <div class="liquids">
+                <div class="liquid__shadow"></div>
+                <div class="liquid__track"></div>
+              </div>
+            </div>
+            <div class="cover"></div>
+          </div>
+        </button>
+        <div class="menu-btn" onclick="toggleDrawer()">⋮</div>
+      </div>
+    </header>
+
+    <div id="drawer">
+      <span class="drawer-close" onclick="toggleDrawer()">✕</span>
+      <div class="profile-container">
+        <div class="badge-ansh">ACE🐉</div>
+        <div
+          class="profile-ring-wrapper"
+          onclick="document.getElementById('profileUpload').click()"
+        >
+          <div class="profile-ring-glow"></div>
+          <div class="profile-ring-sharp"></div>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            id="displayProfilePic"
+            class="profile-img"
+            alt="User"
+          />
+        </div>
+        <label
+          style="
+            font-size: 0.8rem;
+            color: #888;
+            cursor: pointer;
+            margin-bottom: 10px;
+          "
+          >Tap image to change</label
+        >
+        <input
+          type="file"
+          id="profileUpload"
+          accept="image/*"
+          onchange="changeProfilePic()"
+        />
+        <input
+          type="text"
+          id="userName"
+          class="profile-input"
+          placeholder="Name"
+          value="ANSH"
+          oninput="saveProfile()"
+        />
+        <input
+          type="email"
+          id="userEmail"
+          class="profile-input"
+          placeholder="email@neon.ai"
+          onchange="saveProfile()"
+        />
+      </div>
+      <div class="setting-item">
+        <label>Wallpaper (Depth Effect)</label
+        ><label for="bgUpload" class="custom-file-upload"
+          ><span id="bgNameDisplay">Upload Image</span></label
+        ><input
+          type="file"
+          id="bgUpload"
+          accept="image/*"
+          onchange="changeWallpaper()"
+        />
+      </div>
+      <div class="setting-item">
+        <label>UI Theme (10 Premium Options)</label
+        ><select id="themeSelect" onchange="handleThemeChange(this.value)">
+          <option value="theme-emerald">Emerald Green</option>
+          <option value="theme-cyber">Cyber Pink</option>
+          <option value="theme-blue">Electric Blue</option>
+          <option value="theme-purple">Plasma Purple</option>
+          <option value="theme-gold">Solar Gold</option>
+          <option value="theme-red">Crimson Red</option>
+          <option value="theme-lime">Toxic Lime</option>
+          <option value="theme-ice">Ice Crystal</option>
+          <option value="theme-obsidian">Stealth Obsidian</option>
+          <option value="theme-rgb">RGB Hyper (Animated)</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label>Operation Mode</label>
+        <select id="modeSelect" onchange="handleModeChange()">
+          <option value="casual">NEON AI</option>
+          <option value="movie">NEON MOVIES</option>
+          <option value="exam">NEON STUDY</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label>API Keys (Pro)</label
+        ><input
+          type="password"
+          id="apiKeyInput"
+          placeholder="Tavily Key (Web)"
+        /><input
+          type="password"
+          id="tmdbKeyInput"
+          placeholder="TMDB Key (Movies)"
+          style="margin-top: 5px"
+        />
+        <div style="display: flex; gap: 10px; margin-top: 10px">
+          <button class="save-btn" onclick="saveAllKeys()" style="flex: 1">
+            Save All</button
+          ><button
+            class="save-btn"
+            onclick="removeAllKeys()"
+            style="flex: 1; background: #ff4444; color: white"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+      <div class="setting-item" id="examUpload" style="display: none">
+        <label>Exam Syllabus</label
+        ><label for="pdfFile" class="custom-file-upload"
+          ><span id="fileNameDisplay">Choose PDF</span></label
+        ><input type="file" id="pdfFile" accept=".pdf" onchange="uploadPDF()" />
+        <div style="display: flex; gap: 10px; margin-top: 10px">
+          <button
+            class="save-btn"
+            onclick="deletePDF()"
+            style="flex: 1; background: #ff8800; font-size: 0.8rem"
+          >
+            Del PDF</button
+          ><button
+            class="save-btn"
+            onclick="resetExamDB()"
+            style="flex: 1; background: #ff0000; font-size: 0.8rem"
+          >
+            Reset DB
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="movie-carousel">
+      <div class="carousel-title">Trending Now (Real-time)</div>
+      <div class="cards-wrapper" id="cards-container"></div>
+    </div>
+
+    <div id="chat-container">
+      <div class="chat-row assistant">
+        <div class="chat-avatar-container">
+          <div class="ai-avatar-multiglow"></div>
+          <div class="ai-n-logo">N</div>
+        </div>
+        <div class="msg-column">
+          <div class="chat-name-tag">Neon AI</div>
+          <div class="msg">
+            HEY, <br />Welcome back, <span id="welcomeName">Ansh</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-box">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Type command..."
+        onkeypress="handleEnter(event)"
+      />
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+
+    <svg class="sr-only" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur
+            id="SvgjsFeGaussianBlur1000"
+            result="SvgjsFeGaussianBlur1000"
+            in="SourceGraphic"
+            stdDeviation="13"
+          ></feGaussianBlur>
+          <feColorMatrix
+            id="SvgjsFeColorMatrix1001"
+            result="SvgjsFeColorMatrix1001"
+            in="SvgjsFeGaussianBlur1000"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 13 -10"
+            type="matrix"
+          ></feColorMatrix>
+          <feComposite
+            id="SvgjsFeComposite1002"
+            result="SvgjsFeComposite1002"
+            in="SvgjsFeColorMatrix1001"
+            operator="atop"
+          ></feComposite>
+        </filter>
+        <filter id="knockout" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            result="knocked"
+            type="matrix"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1 -1 -1 1 0"
+          />
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="3" intercept="-1" />
+            <feFuncG type="linear" slope="3" intercept="-1" />
+            <feFuncB type="linear" slope="3" intercept="-1" />
+          </feComponentTransfer>
+          <feComponentTransfer>
+            <feFuncR type="table" tableValues="0 0 0 0 0 1 1 1 1 1" />
+            <feFuncG type="table" tableValues="0 0 0 0 0 1 1 1 1 1" />
+            <feFuncB type="table" tableValues="0 0 0 0 0 1 1 1 1 1" />
+          </feComponentTransfer>
+        </filter>
+        <filter id="remove-black" color-interpolation-filters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -255 -255 -255 0 1"
+            result="black-pixels"
+          />
+          <feMorphology
+            in="black-pixels"
+            operator="dilate"
+            radius="0.5"
+            result="smoothed"
+          />
+          <feComposite in="SourceGraphic" in2="smoothed" operator="out" />
+        </filter>
+      </defs>
+    </svg>
+  </body>
+</html>
