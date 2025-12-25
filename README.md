@@ -15,9 +15,7 @@
 
   <br>
   
-  <img src=<img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/38a39252-7474-4a30-a6a5-67438b9b9b96" />
-" width="800" alt="NeonAI Dashboard Preview" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);">
-  <br><br>
+  <img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/38a39252-7474-4a30-a6a5-67438b9b9b96" />
 </div>
 
 ---
