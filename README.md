@@ -88,6 +88,7 @@ static/: Currently used for user-uploaded wallpapers.
 
 The frontend is not an SPA. It is a controlled UI panel, intentionally simple and stable.
 
+
 🎬 NEON MOVIES Mode
 Displays trending movies.
 
@@ -98,6 +99,7 @@ Auto-scroll carousel with hover/touch pause.
 Learns user genre preferences.
 
 Offline Fallback: Uses a local movie database if internet is unavailable.
+
 
 📚 NEON STUDY (Exam Mode)
 RAG Pipeline: Upload a PDF syllabus.
