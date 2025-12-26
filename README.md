@@ -125,38 +125,46 @@ NeonAI does not depend on cloud LLM APIs.
 ```text
 NeonAI/
 │
-├── server.py              # Flask backend (API + routing)
-├── START_NEON.bat         # One-click launcher (Windows)
+├── server.py                  # Flask backend (API + routing)
+├── START_NEON.bat             # One-click launcher (Windows)
+├── requirements.txt           # Python dependencies
+├── README.md                  # Project documentation
 │
-├── brain/                 # Core AI system logic
-│   ├── waterfall.py       # Decision flow & routing
-│   ├── confidence_gate.py # Confidence & hallucination control
-│   ├── memory.py          # Session & long-term memory
-│   └── gk_engine.py       # Knowledge & reasoning engine
+├── brain/                     # Core AI system logic
+│   ├── waterfall.py           # Decision flow & routing
+│   ├── confidence_gate.py     # Confidence & hallucination control
+│   ├── memory.py              # Session & preference memory
+│   └── gk_engine.py           # Knowledge & reasoning engine
 │
-├── models/                # LLM abstraction layer
-│   ├── local_llm.py       # Local LLM interface (offline-first)
-│   └── hybrid_llm.py      # Local + optional online logic
+├── models/                    # LLM abstraction layer
+│   ├── local_llm.py           # Local LLM interface (offline-first)
+│   └── hybrid_llm.py          # Local + optional online logic
 │
-├── exam/                  # NEON STUDY (Exam Mode)
-│   ├── indexer.py         # PDF indexing
-│   └── retriever.py       # Strict PDF-only retrieval
+├── exam/                      # NEON STUDY (Exam / PDF Mode)
+│   ├── indexer.py             # PDF indexing
+│   ├── retriever.py           # Strict PDF-only retrieval
+│   └── uploads/               # User-uploaded PDFs (gitignored)
 │
-├── movie/                 # NEON MOVIES engine
-│   ├── engine.py          # Recommendation logic
-│   └── lookup.py          # Movie metadata
+├── movie/                     # NEON MOVIES engine
+│   ├── engine.py              # Recommendation logic
+│   └── lookup.py              # Movie metadata handling
 │
-├── web/                   # Controlled web adapters
-│   ├── search_adapter.py  # Optional web search
-│   └── movie_adapter.py   # TMDB logic
+├── web/                       # Controlled web adapters
+│   ├── search_adapter.py      # Web search (Tavily / DDG)
+│   └── movie_adapter.py       # TMDB integration
 │
-├── templates/             # Frontend UI
-│   ├── index.html
+├── templates/                 # Frontend HTML templates
+│   └── index.html
+│
+├── static/                    # Frontend static assets
 │   ├── styles.css
-│   └── app.js
+│   ├── app.js
+│   └── wallpapers/            # User background images (runtime)
 │
-└── user_data/
-    └── profile.json       # Local user profile & preferences
+├── user_data/                 # Local user state (offline-first)
+│   └── profile.json
+│
+└── .gitignore                 # Ignore runtime & private data
 
 ```
 
