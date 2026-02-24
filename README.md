@@ -1,0 +1,246 @@
+<div align="center">
+  <h1>🚀 NeonAI</h1>
+  <h3>Local-First Multi-Mode AI System (Experimental)</h3>
+
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
+    <img src="https://img.shields.io/badge/Backend-Flask-black?style=for-the-badge&logo=flask" alt="Flask">
+    <img src="https://img.shields.io/badge/AI-Ollama-orange?style=for-the-badge" alt="Ollama">
+    <img src="https://img.shields.io/badge/Architecture-Offline%20First-green?style=for-the-badge" alt="Offline First">
+  </p>
+
+  <p>
+    <b>Mode-Driven Intelligence • Privacy Focused • System > Model</b>
+  </p>
+
+  <br>
+  
+ <img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/ffe4d47e-c869-4e87-8715-db17f9ada04d" />
+  <br><br>
+</div>
+
+---
+
+## 🧠 What Is NeonAI?
+
+**NeonAI** is a local-first AI system designed to run primarily on your own machine using a local LLM pipeline, with optional and controlled internet access for selected features.
+
+What started as an experiment gradually evolved into a complete AI system architecture with multiple operational modes, strict behavior control, and a premium custom UI.
+
+> ⚠️ **This is not a chatbot wrapper.**
+> NeonAI is an AI system with modes, rules, confidence gates, memory, and decision pipelines.
+
+---
+
+## ✨ Core Philosophy
+
+* 🧠 **Local LLM First** — No mandatory cloud LLM APIs.
+* 🔒 **Privacy-Focused** — Data stays on the user’s machine.
+* 🎯 **Mode-Driven Intelligence** — AI behavior depends on context.
+* 🧪 **Experimental by Design** — Built to explore system ideas.
+* 🧩 **System > Model** — The LLM is a tool, not the decision-maker.
+
+---
+
+## 🎮 Modes & Functionality
+
+NeonAI is a multi-mode AI assistant that can switch between different roles, each with its own rules and permissions.
+
+| Mode | Purpose |
+| :--- | :--- |
+| **NEON CASUAL** | General chat using a local LLM with memory. |
+| **NEON MOVIES** | Movie discovery, recommendations & metadata. |
+| **NEON STUDY** | PDF-based syllabus learning (**Strict Offline**, No Hallucinations). |
+
+*Each mode enforces different constraints, memory usage, and access permissions.*
+
+---
+
+## 🧱 System Architecture
+
+**Key Principle:** The LLM never directly decides responses. All outputs pass through rules, confidence checks, and mode restrictions.
+
+```mermaid
+graph TD;
+    User-->Frontend_UI;
+    Frontend_UI-->Flask_Backend;
+    Flask_Backend-->Brain_Layer;
+    Brain_Layer-->Waterfall_Logic;
+    Waterfall_Logic-->Confidence_Gate;
+    Waterfall_Logic-->Mode_Rules;
+    Mode_Rules-->Local_LLM;
+
+```
+
+---
+
+## 🖥️ Frontend (UI)
+
+* **Pure HTML, CSS, JavaScript** (No frameworks).
+* **GSAP-powered animations**.
+* 10+ Neon Themes + Light / Dark mode.
+* Physics-based **Liquid Toggle**.
+* Fully responsive (Desktop + Mobile).
+
+> **Note on Structure:**
+> * `templates/`: Contains UI files (`index.html`, `styles.css`, `app.js`) served via Flask.
+> * `static/`: Currently used for user-uploaded wallpapers.
+> * *The frontend is not an SPA. It is a controlled UI panel, intentionally simple and stable.*
+> 
+> 
+
+---
+
+## 🎬 NEON MOVIES Mode
+
+* Displays trending movies.
+* Uses **TMDB API** (Optional).
+* Auto-scroll carousel with hover/touch pause.
+* Learns user genre preferences.
+* **Offline Fallback:** Uses a local movie database if internet is unavailable.
+
+## 📚 NEON STUDY (Exam Mode)
+
+* **RAG Pipeline:** Upload a PDF syllabus.
+* Indexes content locally using a Vector Database.
+* **Strict Rule:** If the answer is not present in the PDF → **The AI Refuses**.
+* Internet access is **Completely Blocked** in this mode.
+* *Designed for exam-safe, hallucination-free learning.*
+
+---
+
+## 🧠 Local LLM Engine
+
+NeonAI does not depend on cloud LLM APIs.
+
+* Powered by local models (via **Ollama**).
+* Fully offline capable.
+* Internet access is optional and gated.
+* External APIs never override system rules.
+
+---
+
+## 📂 Project Structure
+
+```text
+NeonAI/
+│
+├── server.py                  # Flask backend (API + routing)
+├── START_NEON.bat             # One-click launcher (Windows)
+├── requirements.txt           # Python dependencies
+├── README.md                  # Project documentation
+│
+├── brain/                     # Core AI system logic
+│   ├── waterfall.py           # Decision flow & routing
+│   ├── confidence_gate.py     # Confidence & hallucination control
+│   ├── memory.py              # Session & preference memory
+│   └── gk_engine.py           # Knowledge & reasoning engine
+│
+├── models/                    # LLM abstraction layer
+│   ├── local_llm.py           # Local LLM interface (offline-first)
+│   └── hybrid_llm.py          # Local + optional online logic
+│
+├── exam/                      # NEON STUDY (Exam / PDF Mode)
+│   ├── indexer.py             # PDF indexing
+│   ├── retriever.py           # Strict PDF-only retrieval
+│   └── uploads/               # User-uploaded PDFs (gitignored)
+│
+├── movie/                     # NEON MOVIES engine
+│   ├── engine.py              # Recommendation logic
+│   └── lookup.py              # Movie metadata handling
+│
+├── web/                       # Controlled web adapters
+│   ├── search_adapter.py      # Web search (Tavily / DDG)
+│   └── movie_adapter.py       # TMDB integration
+│
+├── templates/                 # Frontend HTML templates
+│   └── index.html
+│
+├── static/                    # Frontend static assets
+│   ├── styles.css
+│   ├── app.js
+│   └── wallpapers/            # User background images (runtime)
+│
+├── user_data/                 # Local user state (offline-first)
+│   └── profile.json
+│
+└── .gitignore                 # Ignore runtime & private data
+
+```
+
+---
+
+## ▶️ How to Run
+
+### 1️⃣ Requirements
+
+* Python 3.10+
+* Local LLM runtime (e.g., [Ollama](https://ollama.com/)) installed and running.
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+
+```
+
+### 3️⃣ Start NeonAI
+
+Double-click **`START_NEON.bat`** *Or run manually via terminal:*
+
+```bash
+python server.py
+
+```
+
+**Open in Browser:** `http://localhost:5000`
+
+---
+
+## 🧪 Project Status
+
+* ✅ Core system functional
+* ✅ UI stable & responsive
+* ✅ Multi-mode logic working
+* ⚠️ Experimental (Architecture locked for iteration)
+
+---
+
+## ⚠️ Disclaimer
+
+This is an **experimental project** built for learning, research, and AI system design exploration. It is not a commercial product.
+
+---
+
+<div align="center">
+<h3>🧠 Author</h3>
+<b>Ansh</b>
+
+
+
+
+<i>B.Tech CSE</i>
+
+
+
+
+
+<b>Focus Areas:</b>
+
+
+
+
+AI Systems (not just models) • Offline-first Architecture • Controlled AI Design
+
+
+
+
+
+
+<i>"NeonAI is not about how smart the model is. It’s about how controlled, safe, and purposeful AI should be."</i>
+
+</div>
+
+```
+
+```
