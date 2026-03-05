@@ -1,122 +1,190 @@
 <div align="center">
-  <h1>🚀 NeonAI</h1>
-  <h3>Local-First Multi-Mode AI System (Experimental)</h3>
+
+  <img src="https://img.shields.io/badge/-%E2%9A%A1_NeonAI_V5-000?style=for-the-badge&labelColor=000&color=00ffc8" alt="NeonAI V5" height="40">
+
+  <br><br>
+
+  <h3>⚡ Local-First AI System with Voice Assistant & Tool Calling</h3>
 
   <p>
-    <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
-    <img src="https://img.shields.io/badge/Backend-Flask-black?style=for-the-badge&logo=flask" alt="Flask">
-    <img src="https://img.shields.io/badge/AI-Ollama-orange?style=for-the-badge" alt="Ollama">
-    <img src="https://img.shields.io/badge/Architecture-Offline%20First-green?style=for-the-badge" alt="Offline First">
+    <img src="https://img.shields.io/badge/Python-3.10+-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/Flask-Backend-000?style=flat-square&logo=flask" alt="Flask">
+    <img src="https://img.shields.io/badge/Ollama-LLM-f97316?style=flat-square" alt="Ollama">
+    <img src="https://img.shields.io/badge/Whisper-STT-0ea5e9?style=flat-square" alt="Whisper">
+    <img src="https://img.shields.io/badge/GPT--SoVITS-TTS-a855f7?style=flat-square" alt="TTS">
+    <img src="https://img.shields.io/badge/Offline_First-✓-22c55e?style=flat-square" alt="Offline">
   </p>
 
-  <p>
-    <b>Mode-Driven Intelligence • Privacy Focused • System > Model</b>
-  </p>
+  <p><b>Mode-Driven Intelligence • Voice Assistant • Tool Calling • Privacy Focused</b></p>
 
   <br>
-  
- <img width="1916" height="945" alt="Screenshot 2025-12-26 011944" src="https://github.com/user-attachments/assets/ffe4d47e-c869-4e87-8715-db17f9ada04d" />
-  <br><br>
+
+  <img width="1916" height="945" alt="NeonAI Screenshot" src="https://github.com/user-attachments/assets/ffe4d47e-c869-4e87-8715-db17f9ada04d" />
+
 </div>
+
+<br>
 
 ---
 
 ## 🧠 What Is NeonAI?
 
-**NeonAI** is a local-first AI system designed to run primarily on your own machine using a local LLM pipeline, with optional and controlled internet access for selected features.
+**NeonAI V5** is a fully local AI system with mode-driven intelligence, tool calling, voice assistant, and a premium UI — running entirely on your machine.
 
-What started as an experiment gradually evolved into a complete AI system architecture with multiple operational modes, strict behavior control, and a premium custom UI.
-
-> ⚠️ **This is not a chatbot wrapper.**
-> NeonAI is an AI system with modes, rules, confidence gates, memory, and decision pipelines.
+> ⚠️ **This is not a chatbot wrapper.**  
+> NeonAI is an AI *system* — with modes, rules, confidence gates, tool calling, memory, voice control, and decision pipelines. The LLM is a component, not the decision-maker.
 
 ---
 
-## ✨ Core Philosophy
+## ✨ What Makes NeonAI Different
 
-* 🧠 **Local LLM First** — No mandatory cloud LLM APIs.
-* 🔒 **Privacy-Focused** — Data stays on the user’s machine.
-* 🎯 **Mode-Driven Intelligence** — AI behavior depends on context.
-* 🧪 **Experimental by Design** — Built to explore system ideas.
-* 🧩 **System > Model** — The LLM is a tool, not the decision-maker.
-
----
-
-## 🎮 Modes & Functionality
-
-NeonAI is a multi-mode AI assistant that can switch between different roles, each with its own rules and permissions.
-
-| Mode | Purpose |
-| :--- | :--- |
-| **NEON CASUAL** | General chat using a local LLM with memory. |
-| **NEON MOVIES** | Movie discovery, recommendations & metadata. |
-| **NEON STUDY** | PDF-based syllabus learning (**Strict Offline**, No Hallucinations). |
-
-*Each mode enforces different constraints, memory usage, and access permissions.*
+| Principle | Description |
+|:---|:---|
+| 🧠 **System > Model** | AI logic governs the LLM, not the other way around |
+| 🔒 **Privacy First** | Everything runs locally — your data never leaves your machine |
+| 🎯 **Mode-Driven** | Each mode has its own rules, memory, tools, and constraints |
+| 🛠️ **Tool Calling** | Real tools (weather, calculator, browser, notes) — instant, no LLM needed |
+| 🎤 **Voice Control** | Full voice assistant with system commands, TTS, and tool access |
+| 🧪 **Experimental** | Built to explore controlled AI design, not to be a product |
 
 ---
 
-## 🧱 System Architecture
+## 🎮 Modes
 
-**Key Principle:** The LLM never directly decides responses. All outputs pass through rules, confidence checks, and mode restrictions.
+<table>
+<tr><td width="160"><b>🤖 NEON AI</b></td><td>General chat with smart web search + local LLM hybrid. Calculator & weather tools built-in.</td></tr>
+<tr><td><b>💻 NEON CODE</b></td><td>Copy-paste ready code generation. Auto-detects coding queries from casual mode.</td></tr>
+<tr><td><b>🎬 NEON MOVIES</b></td><td>Trending carousel, movie details with genres/director/trailer/recommendations via TMDB.</td></tr>
+<tr><td><b>📚 NEON STUDY</b></td><td>PDF-based RAG pipeline. Internet blocked. If the answer isn't in the PDF → AI refuses.</td></tr>
+<tr><td><b>🎤 VOICE ASSISTANT</b></td><td>Full voice control — talk to Neon, use tools, control your PC. 20+ command types.</td></tr>
+</table>
 
-```mermaid
-graph TD;
-    User-->Frontend_UI;
-    Frontend_UI-->Flask_Backend;
-    Flask_Backend-->Brain_Layer;
-    Brain_Layer-->Waterfall_Logic;
-    Waterfall_Logic-->Confidence_Gate;
-    Waterfall_Logic-->Mode_Rules;
-    Mode_Rules-->Local_LLM;
+> 💡 Each mode has **isolated chat history** — switching modes keeps each mode's conversation separate.
 
+---
+
+## 🛠️ Tool Calling
+
+NeonAI has built-in tools that respond **instantly** without waiting for the LLM.
+
+| Tool | Trigger Examples | Available In |
+|:---|:---|:---|
+| 🌤️ **Weather** | "Weather in Delhi", "Temperature in New York" | Chat + Voice |
+| 🧮 **Calculator** | "Calculate 25 × 4 + 10", "Convert 100 km to miles" | Chat + Voice |
+| 💻 **System Info** | "Battery level", "RAM usage", "CPU status" | Voice |
+| 📝 **Notes** | "Save note: buy groceries", "Show my notes" | Voice |
+| 🌐 **Web Reader** | "Read this https://example.com" | Voice |
+| 🎵 **Music Selection** | "Top 10 songs", "Play Drake", "Recommend some hip-hop" | Chat + Voice |
+| 🔍 **Browser** | "Search on YouTube", "Google machine learning" | Voice |
+
+```
+User: "Weather in Delhi"
+  → Tool Router detects: weather
+  → Instant response: 🌤️ 28°C, Partly Cloudy
+  → No LLM call needed (< 1 second)
 ```
 
 ---
 
-## 🖥️ Frontend (UI)
+## 🎤 Voice Assistant
 
-* **Pure HTML, CSS, JavaScript** (No frameworks).
-* **GSAP-powered animations**.
-* 10+ Neon Themes + Light / Dark mode.
-* Physics-based **Liquid Toggle**.
-* Fully responsive (Desktop + Mobile).
+Talk to Neon using **Whisper** (STT) + **Llama 3** (brain) + **GPT-SoVITS** (TTS).
 
-> **Note on Structure:**
-> * `templates/`: Contains UI files (`index.html`, `styles.css`, `app.js`) served via Flask.
-> * `static/`: Currently used for user-uploaded wallpapers.
-> * *The frontend is not an SPA. It is a controlled UI panel, intentionally simple and stable.*
-> 
-> 
-
----
-
-## 🎬 NEON MOVIES Mode
-
-* Displays trending movies.
-* Uses **TMDB API** (Optional).
-* Auto-scroll carousel with hover/touch pause.
-* Learns user genre preferences.
-* **Offline Fallback:** Uses a local movie database if internet is unavailable.
-
-## 📚 NEON STUDY (Exam Mode)
-
-* **RAG Pipeline:** Upload a PDF syllabus.
-* Indexes content locally using a Vector Database.
-* **Strict Rule:** If the answer is not present in the PDF → **The AI Refuses**.
-* Internet access is **Completely Blocked** in this mode.
-* *Designed for exam-safe, hallucination-free learning.*
+<table>
+<tr><td><b>Category</b></td><td><b>Examples</b></td></tr>
+<tr><td>🖥️ Apps</td><td>"Open Chrome", "Launch Spotify", "Open VS Code"</td></tr>
+<tr><td>🌐 Web</td><td>"Open YouTube", "Go to GitHub"</td></tr>
+<tr><td>🔍 Search</td><td>"Search Python tutorials", "Google the news"</td></tr>
+<tr><td>▶️ YouTube</td><td>"Play lofi music on YouTube"</td></tr>
+<tr><td>🎵 Media</td><td>"Pause", "Next song", "Stop music"</td></tr>
+<tr><td>🔊 Volume</td><td>"Volume up", "Set volume to 50", "Mute"</td></tr>
+<tr><td>💡 Brightness</td><td>"Increase brightness", "Set brightness to 70"</td></tr>
+<tr><td>📶 Connectivity</td><td>"Turn on Bluetooth", "WiFi off", "Airplane mode"</td></tr>
+<tr><td>⚡ System</td><td>"Shutdown", "Restart", "Lock screen", "Sleep"</td></tr>
+<tr><td>🌤️ Tools</td><td>"What's the weather?", "System info", "Save a note"</td></tr>
+</table>
 
 ---
 
-## 🧠 Local LLM Engine
+## 🏗️ Architecture
 
-NeonAI does not depend on cloud LLM APIs.
+```text
+[ Backend Execution Architecture ]
 
-* Powered by local models (via **Ollama**).
-* Fully offline capable.
-* Internet access is optional and gated.
-* External APIs never override system rules.
+  (HTTP/WebSocket)      (Media Blob)
+    Text Query          Voice Audio
+        │                    │
+        ▼                    ▼
+   tool_router        whisper_engine (STT)
+        │                    │
+  Is it a Tool?          Command?
+  ├── YES ──► Execute    ├── YES ──► command_router
+  │           Local      │           (OS Actions)
+  ▼           Script     ▼
+  NO                     NO
+  │                      │
+  └─────────► waterfall ◄┘
+                  │
+             Need Web?
+             ├── YES ──► search_adapter
+             ▼
+        Mistral / Llama 3
+             (Local LLM)
+                  │
+           confidence_gate
+                  │
+        Pass? ── NO ──► Block/Regenerate
+        │
+        ▼
+   Return Text / TTS (GPT-SoVITS)
+```
+
+---
+
+## 🖥️ UI & Application Flow
+
+```text
+[ Frontend UI State Machine ]
+
+      (Launch)
+          │
+          ▼
+   Splash Screen (css animation)
+          │
+          ▼
+      Login/Register
+    (Auth Verification)
+          │
+          ▼
+      Main Dashboard (index.html) ◄──┐
+          │                          │
+          ├──► Chat Mode (Text)      │ (Settings/Theme)
+          │    - Markdown Render     ├─► UI Customization
+          │    - Glass Widgets       │
+          │                          │
+          ├──► Voice Mode (Audio)    │ (Study Mode)
+          │    - Video Wallpaper     ├─► RAG Interface
+          │    - Audio Visualizer    │
+          │                          │
+          └──► Web Workers ──────────┘
+               (Audio/Media Recording)
+```
+
+---
+
+## 🎨 Premium UI Features
+
+- 🚀 **Animated Splash Screen** — Spinning ring, progress bar, "NEON AI" reveal on startup
+- 🎨 **15+ Neon Themes** + Light/Dark mode with physics-based liquid toggle
+- 💬 **Rich Message Rendering** — Bold, headers, numbered lists as glass cards, rating badges
+- 📊 **Confidence Scoring Badges** — AI self-evaluates (0-100%) and displays a confidence metric badge under every answer
+- 🎥 **Voice Customization** — Upload your own looping 15-second background video for the Voice UI panel
+- 🎵 **Music Cards** — Rich, clickable YouTube-linked gradient cards natively rendered in chat
+- 📋 **Code Blocks** — Syntax highlighted with copy-to-clipboard button
+- 🌐 **Web Source Icons** — Favicon pills show which websites sourced the answer
+- 🎬 **Movie Detail Cards** — Genre tags, director, runtime, trailer button, recommendation carousel
+- 🎙️ **Draggable Voice Button** — GSAP Draggable, saves position
+- 📱 **Fully Responsive** — Desktop + Mobile
 
 ---
 
@@ -125,122 +193,136 @@ NeonAI does not depend on cloud LLM APIs.
 ```text
 NeonAI/
 │
-├── server.py                  # Flask backend (API + routing)
+├── server.py                  # Flask backend + API routing
 ├── START_NEON.bat             # One-click launcher (Windows)
-├── requirements.txt           # Python dependencies
-├── README.md                  # Project documentation
 │
-├── brain/                     # Core AI system logic
-│   ├── waterfall.py           # Decision flow & routing
-│   ├── confidence_gate.py     # Confidence & hallucination control
-│   ├── memory.py              # Session & preference memory
-│   └── gk_engine.py           # Knowledge & reasoning engine
+├── brain/                     # Core AI logic
+│   ├── waterfall.py           # Decision flow & smart routing
+│   ├── confidence_gate.py     # Hallucination control
+│   └── memory.py              # Session & preference memory
 │
-├── models/                    # LLM abstraction layer
-│   ├── local_llm.py           # Local LLM interface (offline-first)
-│   └── hybrid_llm.py          # Local + optional online logic
+├── models/                    # LLM layer
+│   ├── local_llm.py           # Mistral (chat) via Ollama
+│   ├── hybrid_llm.py          # Web + LLM fusion
+│   └── assistant_llm.py       # Llama 3 (voice) via Ollama
 │
-├── exam/                      # NEON STUDY (Exam / PDF Mode)
+├── tools/                     # 🆕 Tool Calling System
+│   ├── tool_router.py         # Intent detection & routing
+│   ├── weather.py             # Weather (wttr.in, free)
+│   ├── calculator.py          # Math + unit conversions
+│   ├── system_info.py         # CPU/RAM/disk/battery
+│   ├── notes.py               # Save/read/delete notes
+│   ├── web_reader.py          # Fetch & read URLs
+│   └── browser_control.py     # Google/YouTube/URL opener
+│
+├── voice/                     # Voice Assistant
+│   ├── whisper_engine.py      # Speech-to-text (Whisper)
+│   ├── tts_engine.py          # Text-to-speech (GPT-SoVITS)
+│   ├── command_router.py      # NLP → action routing
+│   ├── llm_command_executor.py # System command execution
+│   ├── model_loader.py        # Voice model management
+│   └── reference_loader.py    # TTS reference audio
+│
+├── exam/                      # NEON STUDY (PDF RAG)
 │   ├── indexer.py             # PDF indexing
 │   ├── retriever.py           # Strict PDF-only retrieval
-│   └── uploads/               # User-uploaded PDFs (gitignored)
+│   └── uploads/               # User PDFs
 │
-├── movie/                     # NEON MOVIES engine
-│   ├── engine.py              # Recommendation logic
-│   └── lookup.py              # Movie metadata handling
+├── web/                       # Web adapters
+│   ├── search_adapter.py      # Tavily / DuckDuckGo
+│   └── movie_adapter.py       # TMDB (genres, trailer, recs)
 │
-├── web/                       # Controlled web adapters
-│   ├── search_adapter.py      # Web search (Tavily / DDG)
-│   └── movie_adapter.py       # TMDB integration
+├── utils/                     # Utilities
+│   ├── network.py             # Internet policy
+│   └── movie_db.py            # Local movie cache (SQLite)
 │
-├── templates/                 # Frontend HTML templates
-│   └── index.html
+├── user_data/                 # 🆕 User data storage
+│   └── notes.json             # Saved notes
 │
-├── static/                    # Frontend static assets
-│   ├── styles.css
-│   ├── app.js
-│   └── wallpapers/            # User background images (runtime)
-│
-├── user_data/                 # Local user state (offline-first)
-│   └── profile.json
-│
-└── .gitignore                 # Ignore runtime & private data
-
+├── templates/index.html       # Frontend
+└── static/
+    ├── app.js                 # Frontend logic
+    ├── styles.css             # Premium styling (2500+ lines)
+    └── wallpapers/            # Custom backgrounds
 ```
 
 ---
 
-## ▶️ How to Run
+## ▶️ Quick Start
 
-### 1️⃣ Requirements
+### Requirements
 
-* Python 3.10+
-* Local LLM runtime (e.g., [Ollama](https://ollama.com/)) installed and running.
+**Software:**
+- Python 3.10+
+- [Ollama](https://ollama.com/) installed and running
+- Models: `ollama pull mistral` + `ollama pull llama3.2:3b`
+- (Optional) [GPT-SoVITS](https://github.com/RVC-Boss/GPT-SoVITS) for voice TTS
 
-### 2️⃣ Install Dependencies
+**Hardware:**
+- **CPU**: Multi-core processor (Intel i5/Ryzen 5 or better recommended)
+- **RAM**: Minimum 8GB (16GB recommended for running Ollama LLMs smoothly)
+- **GPU** (Optional but recommended): NVIDIA GPU with 6GB+ VRAM (e.g., RTX 3060) to hardware-accelerate Whisper and GPT-SoVITS.
+- **Storage**: Minimum 10GB free space for Python environments, models, and databases (SSD preferred)
+
+### Install & Run
 
 ```bash
 pip install -r requirements.txt
-
-```
-
-### 3️⃣ Start NeonAI
-
-Double-click **`START_NEON.bat`** *Or run manually via terminal:*
-
-```bash
 python server.py
-
 ```
 
-**Open in Browser:** `http://localhost:5000`
+**Or double-click** `START_NEON.bat`
+
+**Open:** `http://localhost:5000`
+
+### Optional API Keys (in Settings ⚙️)
+- **TMDB** — Movie posters, details, recommendations
+- **Tavily** — Higher quality web search (free tier available)
 
 ---
 
-## 🧪 Project Status
+## 🧪 Status
 
-* ✅ Core system functional
-* ✅ UI stable & responsive
-* ✅ Multi-mode logic working
-* ⚠️ Experimental (Architecture locked for iteration)
+- ✅ Multi-mode AI system with isolated history
+- ✅ Tool calling (weather, calculator, notes, system, browser, music)
+- ✅ Voice assistant with 20+ command types and Smart Browser Control
+- ✅ Premium UI with splash screen, 15+ themes, animations, microinteractions
+- ✅ Confidence Gate scoring (0-100% evaluation metric)
+- ✅ Smart web search + local LLM hybrid
+- ✅ Movie mode with trailer, genres, recommendations
+- ✅ Code blocks syntax highlighted with copy-to-clipboard button
+- ✅ Rich markdown rendering (lists, headers, ratings)
+- ⚠️ Experimental — Architecture locked for iteration
+
+---
+
+## 🚀 Future Enhancements & Scope
+
+While NeonAI V5 is feature-rich, the architecture allows for significant future scalability:
+1. **Vision Integration**: Integrating models like Llama-3-Vision to allow Neon to "see" via the webcam or analyze user-uploaded images/screenshots locally.
+2. **Long-Term Vector Memory**: Expanding the current session tracking into a persistent vector database (like ChromaDB or FAISS) to allow Neon to remember conversations and user preferences across months.
+3. **Autonomous Agents (Agentic Workflows)**: Upgrading the Tool Router to an autonomous agent system (using frameworks like LangChain or AutoGen) to chain complex tools together automatically without immediate user input.
 
 ---
 
 ## ⚠️ Disclaimer
 
-This is an **experimental project** built for learning, research, and AI system design exploration. It is not a commercial product.
+This is an **experimental project** built for learning, research, and AI system design exploration. Not a commercial product.
 
 ---
 
 <div align="center">
-<h3>🧠 Author</h3>
-<b>Ansh</b>
 
+  <h3>🧠 Built by Ansh</h3>
 
+  <i>B.Tech CSE</i>
 
+  <br><br>
 
-<i>B.Tech CSE</i>
+  <b>AI Systems • Voice Assistants • Tool Calling • Offline-First Architecture</b>
 
+  <br><br>
 
-
-
-
-<b>Focus Areas:</b>
-
-
-
-
-AI Systems (not just models) • Offline-first Architecture • Controlled AI Design
-
-
-
-
-
-
-<i>"NeonAI is not about how smart the model is. It’s about how controlled, safe, and purposeful AI should be."</i>
+  <i>"NeonAI is not about how smart the model is. It's about how controlled, safe, and purposeful AI should be."</i>
 
 </div>
-
-```
-
-```
